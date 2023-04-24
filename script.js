@@ -21,20 +21,44 @@ function playerChoose () {
     playerChoose = playerChoose.toLowerCase()
     return playerChoose
 }
-//Make a game function that passes in computer's and player's choose
+//Make a result function that passes in computer's and player's choose
     //compares the values of functions with conditional statements
     //returns either player lost or won
-function game (computerChoose, playerChoose) {
+function result (computerChoose, playerChoose) {
     if (computerChoose === playerChoose) {
-        console.log("It was a tie!")
+        console.log(`It was a tie! Computer picked ${computerChoose}`)
     }
     else if (computerChoose === "rock" && playerChoose === "scissors" || 
              computerChoose === "scissors" && playerChoose === "paper" ||
              computerChoose === "paper" && playerChoose === "rock") {
-        console.log(`You lost! Computer picked ${computerChoose}`)
+        console.log(`You lost! Computer picked ${computerChoose}`);
+        return "computer"
     }
-    else {console.log(`You won! Computer picked ${computerChoose}`)}
+    else {
+        console.log(`You won! Computer picked ${computerChoose}`);
+        return "player"
+    }
 }
-let player = playerChoose()
-let computer = computerChoose()
-game (computer, player)
+// looped through game function 5 times and get overall winner best out of 5
+function game () {
+    let count = 1
+    let playerScore = 0
+    let computerScore = 0
+    while (count <= 5) {
+        let computer = computerChoose()
+        let player = playerChoose()
+        let score = result (computer, player)
+        if (score === "player") {
+            playerScore++
+        }
+        else if (score === "computer") {
+            computerScore++
+        }
+        count++
+    }
+    if (computerScore > playerScore) {console.log("Computer won best of 5!")}
+    else if (computerScore < playerScore) {console.log("You won best of 5!")}
+    else {"Best of 5 was a tie!"}
+}
+
+game()
