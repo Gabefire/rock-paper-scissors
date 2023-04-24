@@ -11,10 +11,10 @@ Once you have the files, open the index.html file in your browser to start playi
 ## How to Play
 To play the game, simply click on one of the three buttons: "Rock", "Paper", or "Scissors". The computer will then randomly choose one of the three options as well. The winner is determined according to the following rules:
 
-Rock beats Scissors
-Scissors beats Paper
-Paper beats Rock
-If both the player and the computer choose the same option, it's a tie and no one wins.
+* Rock beats Scissors
+* Scissors beats Paper
+* Paper beats Rock
+* If both the player and the computer choose the same option, it's a tie and no one wins.
 
 The game is played for a total of 5 rounds, and the player's score is kept track of throughout the game. After 5 rounds, the final score is displayed.
 
