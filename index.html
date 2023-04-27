@@ -3,8 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <h1>Rock Paper Scissors</h1>
+        <div class="choices-container">
+            <h2>Pick a Choice:</h2>
+            <ul class = "choices">
+                <button id="rock" class="choice">Rock</button>
+                <button id="paper" class="choice">Paper</button>
+                <button id="scissors" class="choice">Scissors</button>
+            </ul>
+        </div>
+        <div class="results transition"></div>
+        <div class="scores">
+            <div class="container">
+                <div class="title">Computer Score</div>
+                <div class="computerScore"></div>
+            </div>
+            <div class = "container">
+                <div class="title">Player Score</div>
+                <div class="playerScore"></div>
+            </div>
+        </div>
+        <section class="modal hidden">            
+            <div class="gameOver"></div>
+            <button class="reset" onClick="window.location.reload();">Play Again</button>
+        </section>
+        <div class="overlay hidden"></div>
+        <button class="reset" onClick="window.location.reload();">Reload</button>
+        
         <script src="script.js"></script>
     </body>
 </html>

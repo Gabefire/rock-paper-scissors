@@ -9,52 +9,60 @@ function getComputerChoice () {
     else {return "scissors";}
 }
 
-function getPlayerChoice () {
-    while (true) {
-    let playerChoice = prompt("Rock, Paper or Scissors?")
-    playerChoice = playerChoice.toLowerCase()
-    if (playerChoice === 'rock' || playerChoice === "paper" ||
-        playerChoice === 'scissors') {
-            return playerChoice}
-    alert(`${playerChoice} is not an option! Please try again!`);
+function checkWinner() {
+    if (playerScore===5) {
+        const results = document.querySelector('.gameOver');
+        results.textContent = "You won!";
+        openModel()
     }
+    else if (computerScore===5) {
+        const results = document.querySelector('.gameOver');
+        results.textContent = "Computer won!";
+        openModel()
+    }
+
 }
 
-function result (computerChoice, playerChoice) {
+function playRound (event) {
+    if (playerScore===5 || computerScore===5) {
+        return;
+    }
+    const playerChoice = event.currentTarget.id
+    const computerChoice = getComputerChoice()
+    const results = document.querySelector(".results")
     if (computerChoice === playerChoice) {
-        console.log(`It was a tie! Computer picked ${computerChoice}`)
+        results.textContent = `It was a tie! Computer picked ${computerChoice}`
     }
     else if (computerChoice === "rock" && playerChoice === "scissors" || 
              computerChoice === "scissors" && playerChoice === "paper" ||
              computerChoice === "paper" && playerChoice === "rock") {
-        console.log(`You lost! Computer picked ${computerChoice}`);
-        return "computer"
+            results.textContent = `You lost! Computer picked ${computerChoice}`
+            computerScore++
+            compScore.textContent = `${computerScore}`
     }
     else {
-        console.log(`You won! Computer picked ${computerChoice}`);
-        return "player"
+        results.textContent = `You won! Computer picked ${computerChoice}`
+        playerScore++
+        playScore.textContent = `${playerScore}`
     }
+    checkWinner()
 }
+let computerScore = 0
+let playerScore = 0
+const btn = document.querySelectorAll('.choice')
+btn.forEach((btn) => { 
+    btn.addEventListener('click', playRound)
+})
 
-function game () {
-    let count = 1
-    let playerScore = 0
-    let computerScore = 0
-    while (count <= 5) {
-        const computer = getComputerChoice()
-        const player = getPlayerChoice()
-        const score = result (computer, player)
-        if (score === "player") {
-            playerScore++
-        }
-        else if (score === "computer") {
-            computerScore++
-        }
-        count++
-    }
-    if (computerScore > playerScore) {console.log("Computer won best of 5!")}
-    else if (computerScore < playerScore) {console.log("You won best of 5!")}
-    else {"Best of 5 was a tie!"}
+const playScore = document.querySelector('.playerScore')
+playScore.textContent = `${playerScore}`
+
+const compScore = document.querySelector('.computerScore')
+compScore.textContent = `${computerScore}`
+
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+function openModel() {
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
 }
-
-game()
