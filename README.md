@@ -19,11 +19,5 @@ To play the game, simply click on one of the three buttons: "Rock", "Paper", or 
 The game is played for a total of 5 rounds, and the player's score is kept track of throughout the game. After 5 rounds, the final score is displayed.
 
 ## Technologies Used
-This project was written using JavaScript, and HTML
+This project was written using JavaScript, CSS and HTML
 
-## Future Improvements
-Here are some potential improvements that could be made to the game in the future:
-
-* Add a "Reset" button to allow the player to start a new game without having to refresh the page.
-* Add a user interface to make it more visually appealing.
-* Allow the player to choose how many rounds they want to play.
